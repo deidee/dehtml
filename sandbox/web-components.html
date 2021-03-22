@@ -5,13 +5,30 @@
     <title>deHTML</title>
 </head>
 <body id="top">
-<de-logo></de-logo>
+<de-logo text="deidee"></de-logo>
 <script>
     "use strict";
 
     class DeLogo extends HTMLElement {
+        static get observedAttributes() {
+            return ['text'];
+        }
+
         constructor() {
             super();
+
+            const shadow = this.attachShadow({mode: 'open'});
+
+            const img = document.createElement('img');
+            img.src = 'https://deidee.com/logo.png?str=' + this.getAttribute('text');
+
+            shadow.appendChild(img);
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (name === 'text') {
+                this.shadowRoot.querySelector('img').src = 'https://deidee.com/logo.png?str=' + newValue;
+            }
         }
     }
 
