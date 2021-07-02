@@ -2,12 +2,15 @@
 
 HTML-uitbreiding van en voor [deidee](https://deidee.nl/). Momenteel in de experimentele fase.
 
-## Overwegen
+## Bevat
 
 - ``<de-logo>``
+- ``<de-maan>``
+
+## Overwegen
+
 - ``<de-knop>``
 - ``<de-code>``
 - ``<de-klok>``
-- ``<de-maan>``
 - ``<de-carrousel>``
 - ``<de-editor>``
