@@ -28,6 +28,15 @@
         <td><de-code language="scss">* { color: #f00; }</de-code></td>
     </tr>
     <tr>
+        <th>deKlok</th>
+        <td>
+        <pre>
+            &lt;de-klok>&lt;/de-klok>
+        </pre>
+        </td>
+        <td><de-klok></de-klok></td>
+    </tr>
+    <tr>
         <th>deLogo</th>
         <td>
         <pre>
@@ -47,6 +56,50 @@
     </tr>
     </tbody>
 </table>
+
+<template id="de-klok">
+    <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px">
+        <style>
+            rect {
+                transform-box: fill-box;
+                transform-origin: 50% 100%;
+            }
+            .hour {
+                animation: spin 86400s steps(60, end) infinite;
+                transform: rotate(90deg);
+                transform-origin: 50% 74%;
+            }
+            .minute {
+                animation: spin 3600s steps(60, end) infinite;
+                transform-origin: 50% 80%;
+            }
+            .second {
+                animation: spin 60s steps(60, end) infinite;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+        <path class="shape" d="
+            M 100, 100
+            m 0 -100
+            a 100 100 0 1 0 1 0
+            z
+            m -1 25
+            a 75 75 0 1 1 -1 0
+            Z" />
+        <rect class="hour" x="95" y="56" width="10" height="60"/>
+        <rect class="minute" x="96" y="38" width="8" height="78"/>
+        <rect class="second" fill="red" x="99" y="12" width="2" height="88"/>
+    </svg>
+</template>
 
 <script>
     "use strict";
@@ -71,6 +124,19 @@
     }
 
     window.customElements.define('de-code', DeCode);
+
+    class DeKlok extends HTMLElement {
+        constructor() {
+            super();
+            let template = document.getElementById('de-klok');
+            let templateContent = template.content;
+
+            const shadow = this.attachShadow({mode: 'open'});
+            shadow.appendChild(templateContent.cloneNode(true));
+        }
+    }
+
+    window.customElements.define('de-klok', DeKlok);
 
     class DeLogo extends HTMLElement {
         static get observedAttributes() {
