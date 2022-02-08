@@ -1,6 +1,34 @@
 <!doctype html>
 <meta charset="utf-8">
 <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px">
+    <style>
+        rect {
+            transform-box: fill-box;
+            transform-origin: 50% 100%;
+        }
+        .hour {
+            animation: spin 86400s steps(60, end) infinite;
+            transform: rotate(90deg);
+            transform-origin: 50% 74%;
+        }
+        .minute {
+            animation: spin 3600s steps(60, end) infinite;
+            transform-origin: 50% 80%;
+        }
+        .second {
+            animation: spin 60s steps(60, end) infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
     <path class="shape" d="
             M 100, 100
             m 0 -100
@@ -9,7 +37,7 @@
             m -1 25
             a 75 75 0 1 1 -1 0
             Z" />
-    <rect class="hour" fill="lime" x="93" y="48" width="14" height="52"/>
-    <rect class="minute" fill="blue" x="96" y="30" width="8" height="70"/>
+    <rect class="hour" fill="lime" x="95" y="56" width="10" height="60"/>
+    <rect class="minute" fill="blue" x="96" y="38" width="8" height="78"/>
     <rect class="second" fill="red" x="99" y="12" width="2" height="88"/>
 </svg>
