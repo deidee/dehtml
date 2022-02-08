@@ -31,10 +31,10 @@
         <th>deKlok</th>
         <td>
         <pre>
-            &lt;de-klok>&lt;/de-klok>
+            &lt;de-klok hour="22" minute="8" second="45">&lt;/de-klok>
         </pre>
         </td>
-        <td><de-klok></de-klok></td>
+        <td><de-klok hour="22" minute="8" second="45"></de-klok></td>
     </tr>
     <tr>
         <th>deLogo</th>
@@ -60,30 +60,58 @@
 <template id="de-klok">
     <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px">
         <style>
+            :root {
+                --hourDegrees: 0deg;
+                --minuteDegrees: 0deg;
+                --secondDegrees: 0deg;
+            }
+
             rect {
                 transform-box: fill-box;
                 transform-origin: 50% 100%;
             }
+
             .hour {
-                animation: spin 86400s steps(60, end) infinite;
-                transform: rotate(90deg);
+                animation: spinHour 86400s steps(60, end) infinite;
                 transform-origin: 50% 74%;
             }
+
             .minute {
-                animation: spin 3600s steps(60, end) infinite;
+                animation: spinMinute 3600s steps(60, end) infinite;
                 transform-origin: 50% 80%;
             }
+
             .second {
-                animation: spin 60s steps(60, end) infinite;
+                animation: spinSecond 60s steps(60, end) infinite;
             }
 
-            @keyframes spin {
+            @keyframes spinHour {
                 from {
-                    transform: rotate(0deg);
+                    transform: rotate(var(--hourDegrees));
                 }
 
                 to {
-                    transform: rotate(360deg);
+                    transform: rotate(calc(var(--hourDegrees) + 360deg));
+                }
+            }
+
+            @keyframes spinMinute {
+                from {
+                    transform: rotate(var(--minuteDegrees));
+                }
+
+                to {
+                    transform: rotate(calc(var(--minuteDegrees) + 360deg));
+                }
+            }
+
+            @keyframes spinSecond {
+                from {
+                    transform: rotate(var(--secondDegrees));
+                }
+
+                to {
+                    transform: rotate(calc(var(--secondDegrees) + 360deg));
                 }
             }
         </style>
@@ -130,6 +158,22 @@
             super();
             let template = document.getElementById('de-klok');
             let templateContent = template.content;
+            let svg = templateContent.querySelector('svg');
+
+            if(this.hasAttribute('hour')) {
+                let hourDegrees = 360 / 24 * this.getAttribute('hour');
+                svg.style.setProperty('--hourDegrees', hourDegrees + 'deg');
+            }
+
+            if(this.hasAttribute('minute')) {
+                let minuteDegrees = 360 / 60 * this.getAttribute('minute');
+                svg.style.setProperty('--minuteDegrees', minuteDegrees + 'deg');
+            }
+
+            if(this.hasAttribute('second')) {
+                let secondDegrees = 360 / 60 * this.getAttribute('second');
+                svg.style.setProperty('--secondDegrees', secondDegrees + 'deg');
+            }
 
             const shadow = this.attachShadow({mode: 'open'});
             shadow.appendChild(templateContent.cloneNode(true));
