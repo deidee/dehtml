@@ -5,8 +5,13 @@
     <title>deHTML</title>
     <link rel="author" href="https://alexanderchristiaanjacob.com/">
     <link rel="publisher" href="https://deidee.nl/">
+    <link rel="stylesheet" href="https://default.style/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/themes/prism.min.css">
-    <link rel="stylesheet" href="https://hetcdn.nl/deidee/css/deprisma.css">
+    <style>
+        body {
+            max-width: none;
+        }
+    </style>
 </head>
 <body id="top">
 <h1>de<abbr>html</abbr></h1>
@@ -23,7 +28,7 @@
         <th>deCode</th>
         <td>
         <pre><code class="language-markup">
-            &lt;de-code language="scss">* { color: #f00; }&lt;/de-code>
+&lt;de-code language="scss">* { color: #f00; }&lt;/de-code>
         </code></pre>
         </td>
         <td><de-code language="scss">* { color: #f00; }</de-code></td>
@@ -32,7 +37,7 @@
         <th>deKlok</th>
         <td>
         <pre><code class="language-markup">
-            &lt;de-klok hour="22" minute="8" second="45">&lt;/de-klok>
+&lt;de-klok hour="22" minute="8" second="45">&lt;/de-klok>
         </code></pre>
         </td>
         <td><de-klok hour="22" minute="8" second="45"></de-klok></td>
@@ -41,7 +46,7 @@
         <th>deLogo</th>
         <td>
         <pre><code class="language-markup">
-            &lt;de-logo text="deTest">&lt;/de-logo>
+&lt;de-logo text="deTest">&lt;/de-logo>
         </code></pre>
         </td>
         <td><de-logo text="deTest"></de-logo></td>
@@ -50,7 +55,7 @@
         <th>deMaan</th>
         <td>
         <pre><code class="language-markup">
-            &lt;de-maan>&lt;/de-maan>
+&lt;de-maan>&lt;/de-maan>
         </code></pre>
         </td>
         <td><de-maan></de-maan></td>
@@ -278,6 +283,7 @@
     window.customElements.define('de-maan', DeMaan);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-markup.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
