@@ -4,6 +4,7 @@ HTML-uitbreiding van en voor [deidee](https://deidee.nl/). Momenteel in de exper
 
 ## Bevat
 
+- ``<de-klok>``
 - ``<de-logo>``
 - ``<de-maan>``
 
@@ -11,6 +12,5 @@ HTML-uitbreiding van en voor [deidee](https://deidee.nl/). Momenteel in de exper
 
 - ``<de-knop>``
 - ``<de-code>``
-- ``<de-klok>``
 - ``<de-carrousel>``
 - ``<de-editor>``
